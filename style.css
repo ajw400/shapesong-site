@@ -1,0 +1,194 @@
+/* Shapesong — one small stylesheet for every page.
+   Colours come from the app icon: warm paper and dark ink. */
+
+:root {
+  --paper: #f6f1e7;
+  --ink: #1e1c17;
+  --soft: #5a554b;   /* quieter text; still well above 4.5:1 on paper */
+  --line: #ddd5c4;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 1.0625rem;
+  line-height: 1.6;
+}
+
+main,
+header,
+footer {
+  max-width: 38rem;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+
+header {
+  padding-top: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.95rem;
+}
+
+header .home {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+header .home img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.5rem;
+}
+
+a {
+  color: var(--ink);
+  text-underline-offset: 0.18em;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+}
+
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+  background: var(--paper);
+  padding: 0.25rem 0.5rem;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 3rem 0 1.5rem;
+}
+
+h2 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 2.25rem 0 0.4rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+.meta {
+  color: var(--soft);
+  font-size: 0.95rem;
+}
+
+/* Home */
+
+.hero {
+  text-align: center;
+  padding-top: 3.5rem;
+}
+
+.hero img {
+  width: 7.5rem;
+  height: 7.5rem;
+  border-radius: 1.75rem;
+  box-shadow: 0 1px 0 var(--line), 0 0 0 1px var(--line);
+}
+
+.hero h1 {
+  margin: 1.5rem 0 2rem;
+}
+
+.hero p {
+  text-align: left;
+}
+
+.hero .soon,
+.hero .contact {
+  text-align: center;
+}
+
+.soon {
+  margin-top: 2rem;
+  font-weight: 600;
+}
+
+/* A quiet line between the Dutch and the English half */
+
+.lang + .lang {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--line);
+}
+
+.lang:not(.hero) > h1:first-child {
+  margin-top: 2.5rem;
+}
+
+.lang + .lang > h1:first-child {
+  margin-top: 0;
+}
+
+address {
+  margin-bottom: 1rem;
+}
+
+address {
+  font-style: normal;
+}
+
+footer {
+  margin-top: 5rem;
+  padding-bottom: 3rem;
+  font-size: 0.95rem;
+  color: var(--soft);
+}
+
+footer nav {
+  display: flex;
+  gap: 1.5rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1.25rem;
+}
+
+footer a {
+  color: var(--soft);
+}
+
+@media (min-width: 40rem) {
+  body {
+    font-size: 1.125rem;
+  }
+
+  h1 {
+    font-size: 2.4rem;
+  }
+}
