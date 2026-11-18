@@ -1,0 +1,27 @@
+# The site on the Hetzner server, beside the app (fallback to GitHub Pages).
+# Run from the repository root:  source ~/.shapesong-deploy.env && kamal deploy -c hosting/deploy.yml
+service: shapesong-site
+image: <%= ENV.fetch("SHAPESONG_GHCR_USER") %>/shapesong-site
+servers:
+  web:
+    - <%= ENV.fetch("SHAPESONG_SERVER_IP") %>
+proxy:
+  ssl: true
+  hosts:
+    - shapesong.com
+    - www.shapesong.com
+  app_port: 80
+  healthcheck:
+    path: /
+registry:
+  server: ghcr.io
+  username: <%= ENV.fetch("SHAPESONG_GHCR_USER") %>
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+builder:
+  arch: arm64
+  context: "."
+  dockerfile: hosting/Dockerfile
+logging:
+  driver: journald
+secrets_path: hosting/.kamal/secrets

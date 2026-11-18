@@ -13,7 +13,8 @@ The small website of the Shapesong app: plain HTML and CSS, no build step, no sc
 
 Each page holds the Dutch text first and the English text below it (the part marked `lang="en"`).
 `style.css` holds the look for every page. The pictures come from the app's icon and the Play feature graphic.
-`CNAME` tells GitHub Pages the site's domain; leave it as it is.
+`hosting/` holds how the site runs on the Hetzner server: nginx in a small container behind the app's kamal-proxy,
+which also fetches the certificates. `CNAME` is left from GitHub Pages, the first host.
 
 ## Changing a sentence and publishing again
 
@@ -28,10 +29,14 @@ Each page holds the Dutch text first and the English text below it (the part mar
    git push
    ```
 
-4. GitHub Pages publishes the change by itself within a minute or two. Reload the page to check
-   (on a phone you may need to reload twice).
+4. Publish it on the server (since 18 November 2026 the site runs on the Hetzner server, beside the app):
 
-Or, without Terminal: open the file on github.com, click the pencil icon, change the text and press "Commit changes".
+   ```
+   source ~/.shapesong-deploy.env
+   BUNDLE_GEMFILE=~/code/ajw400/hc-wt/december/api/Gemfile bundle exec kamal deploy -c hosting/deploy.yml
+   ```
+
+   Reload the page to check (on a phone you may need to reload twice).
 
 ## The privacy notice
 
